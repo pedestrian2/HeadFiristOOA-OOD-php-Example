@@ -30,20 +30,20 @@ class Inventory {
 
     public function search(Guitar $searchGuitar) {
         foreach ($this->guitarList as $value) {
-            $builder = $value->getBuilder();
-            if (($builder == null) || ($builder == "") || ($builder != $searchGuitar->getBuilder() ))
+            $builder = strtolower($value->getBuilder());
+            if (($builder == null) || ($builder == "") || ($builder != strtolower($searchGuitar->getBuilder())))
                 continue;
-            $model = $value->getmodel();
-            if (($model == null) || ($model == "") || ($model != $searchGuitar->getmodel()))
+            $model = strtolower($value->getmodel());
+            if (($model == null) || ($model == "") || ($model != strtolower($searchGuitar->getmodel())))
                 continue;
-            $type = $value->getType();
-            if (($type == null) || ($type == "") || ($type != $searchGuitar->getType()))
+            $type = strtolower($value->getType());
+            if (($type == null) || ($type == "") || ($type != strtolower($searchGuitar->getType())))
                 continue;
-            $backwood = $value->getBackWood();
-            if (($backwood == null) || ($backwood == "") || ($backwood != $searchGuitar->getBackWood()))
+            $backwood = strtolower($value->getBackWood());
+            if (($backwood == null) || ($backwood == "") || ($backwood != strtolower($searchGuitar->getBackWood())))
                 continue;
-            $topwood = $value->getTopWood();
-            if (($topwood == null) || ($topwood == "") || ($topwood != $searchGuitar->getTopWood()))
+            $topwood = strtolower($value->getTopWood());
+            if (($topwood == null) || ($topwood == "") || ($topwood != strtolower($searchGuitar->getTopWood())))
                 continue;
             return $value;
         }
