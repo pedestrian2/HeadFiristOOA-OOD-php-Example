@@ -29,6 +29,7 @@ class Inventory {
     }
 
     public function search(Guitar $searchGuitar) {
+        $resultGuitar = array();
         foreach ($this->guitarList as $value) {
             $builder = strtolower($value->getBuilder());
             if (($builder == null) || ($builder == "") || ($builder != strtolower($searchGuitar->getBuilder())))
@@ -45,9 +46,9 @@ class Inventory {
             $topwood = strtolower($value->getTopWood());
             if (($topwood == null) || ($topwood == "") || ($topwood != strtolower($searchGuitar->getTopWood())))
                 continue;
-            return $value;
+            $resultGuitar[] = $value;
         }
-        return null;
+        return $resultGuitar;
     }
 
 }

@@ -18,7 +18,7 @@ class Guitar {
         $this->topWood = $topWood;
     }
     
-    public function getSerialName(){
+    public function getSerialNumber(){
         return $this->serialNumber;
     }
     public function getPrice(){
