@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Guitar.class.php';
+require_once 'GuitarSpec.class.php';
 
 /**
  * GuitarList.
@@ -16,7 +17,8 @@ class Inventory {
     }
 
     public function addGuitar($serialNumber, $price, $builder, $model, $type, $backWood, $topWood) {
-        $this->guitarList[] = new Guitar($serialNumber, $price, $builder, $model, $type, $backWood, $topWood);
+        $guitarSpec = new GuitarSpec($builder, $model, $type, $backWood, $topWood);
+        $this->guitarList[] = new Guitar($serialNumber, $price, $guitarSpec);
     }
 
     public function getGuitar($serialNumber) {
@@ -28,25 +30,10 @@ class Inventory {
         return null;
     }
 
-    public function search(Guitar $searchGuitar) {
+    public function search(GuitarSpec $searchGuitarSpec) {
         $resultGuitar = array();
-        foreach ($this->guitarList as $value) {
-            $builder = strtolower($value->getBuilder());
-            if (($builder == null) || ($builder == "") || ($builder != strtolower($searchGuitar->getBuilder())))
-                continue;
-            $model = strtolower($value->getmodel());
-            if (($model == null) || ($model == "") || ($model != strtolower($searchGuitar->getmodel())))
-                continue;
-            $type = strtolower($value->getType());
-            if (($type == null) || ($type == "") || ($type != strtolower($searchGuitar->getType())))
-                continue;
-            $backwood = strtolower($value->getBackWood());
-            if (($backwood == null) || ($backwood == "") || ($backwood != strtolower($searchGuitar->getBackWood())))
-                continue;
-            $topwood = strtolower($value->getTopWood());
-            if (($topwood == null) || ($topwood == "") || ($topwood != strtolower($searchGuitar->getTopWood())))
-                continue;
-            $resultGuitar[] = $value;
+        foreach ($this->guitarList as $guitar) {
+            if($guitar->getSpec()->matchSpec($searchGuitarSpec))$resultGuitar[] = $guitar;
         }
         return $resultGuitar;
     }

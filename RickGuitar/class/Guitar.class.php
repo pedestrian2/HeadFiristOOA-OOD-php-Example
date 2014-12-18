@@ -6,16 +6,12 @@
  * @author pedestrian
  */
 class Guitar {
-    private $serialNumber,$price,$builder,$model,$type,$backWood,$topWood;
+    private $serialNumber,$price,$spec;
     
-    public function __construct($serialNumber,$price,$builder,$model,$type,$backWood,$topWood) {
+    public function __construct($serialNumber,$price, GuitarSpec $spec) {
         $this->serialNumber = $serialNumber;
         $this->price = $price;
-        $this->builder = $builder;
-        $this->model = $model;
-        $this->type = $type;
-        $this->backWood = $backWood;
-        $this->topWood = $topWood;
+        $this->spec = $spec;
     }
     
     public function getSerialNumber(){
@@ -27,19 +23,7 @@ class Guitar {
     public function setPrice($newPrice){
         $this->price = $newPrice;
     }
-    public function getBuilder(){
-        return $this->builder;
-    }
-    public function getModel(){
-        return $this->model;
-    }
-    public function getType(){
-        return $this->type;
-    }
-    public function getBackWood(){
-        return $this->backWood;
-    }
-    public function getTopWood(){
-        return $this->topWood;
+    public function getSpec(){
+        return $this->spec;
     }
 }
