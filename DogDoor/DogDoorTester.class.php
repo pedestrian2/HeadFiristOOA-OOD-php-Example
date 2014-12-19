@@ -10,15 +10,21 @@ class DogDoorTester {
     public function __construct() {
         $FidoDoor = new DogDoor();
         $FidoRemote = new RemoteControl($FidoDoor);
-        echo "Fido in house";
+        $this->doorStaus($FidoDoor);
+        echo "\n Fido barking";
         $FidoRemote->pressButton();
         echo "\n Fido go outside";
-        $FidoRemote->pressButton();
-        echo "\n Fido come home";
-        $FidoRemote->pressButton();
-        echo "\n Fido go outside";
-        $FidoRemote->pressButton();
-        echo "\n Fido come home";
+        echo "\n Fido done someting";
+        echo "\n Fido back inside";
+        //autoclose
+        $this->doorStaus($FidoRemote->getDoor());
+    }
+    public function doorStaus(DogDoor $door) {
+        if($door->isOpen()){
+            echo "\n door is open now";
+        }else{
+            echo "\n door is close now";
+        }
     }
 }
 
