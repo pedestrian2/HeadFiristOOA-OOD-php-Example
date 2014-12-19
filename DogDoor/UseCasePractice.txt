@@ -1,0 +1,14 @@
+Kristen
+
+Requirements
+1.enter some code by keyboard 
+2.lock door and window
+3.unlock door and window
+
+UseCase
+1.Kristen set the code
+2.someone enter code 
+3.lock door and window
+4.someone enter code
+5.unlock door and window
+
