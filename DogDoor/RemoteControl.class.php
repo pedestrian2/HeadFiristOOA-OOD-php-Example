@@ -15,14 +15,8 @@ class RemoteControl {
             $this->door->closeDoor();
         }else{
             $this->door->openDoor();
-            echo "\n door is open now";
-            $this->autoClose();
         }
         
-    }
-    protected function autoClose() {
-        sleep(5);                   //php has no setTimeOut function
-        $this->door->closeDoor();
     }
     public function getDoor(){
         return $this->door;
